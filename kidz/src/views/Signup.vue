@@ -59,7 +59,7 @@ import cookies from "vue-cookies";
     signupUser: function() {
       axios
         .request({
-          url:"http://localhost:8080/",
+          url:"http://127.0.0.1:5000/api/users",
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -73,6 +73,7 @@ import cookies from "vue-cookies";
         })
         .then(response => {
           cookies.set("loginToken", response.data.loginToken);
+          cookies.set("userId", response.data.userId)
           this.$router.push("/entry");
         })
         .catch(error => {

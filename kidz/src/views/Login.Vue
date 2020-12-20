@@ -1,6 +1,8 @@
-<template>
-  <v-app class="cernter-alignment">
-    <h1 class="header-text">Welcome to JustKidz Application</h1>
+
+  <template>
+  <div class="cernter-alignment">
+
+    <h1 class="header-text">Welcome to JustKidz App!</h1>
     <br />
     <h2 class="header-text">Login</h2>
     <div id="login-form">
@@ -29,9 +31,9 @@
       <router-link to="/signup" id="signup-link">
         New User? Sign up here</router-link
       >
-      <footer-page />
+     
     </div>
-  </v-app>
+  </div>
 </template>
 
 <script>
@@ -41,10 +43,8 @@ import cookies from "vue-cookies";
 
 export default {
   name: "login-page",
-  components: {
-    HeaderPage,
-    FooterPage
-  },
+ 
+
   data() {
     return {
       email: "",
@@ -57,7 +57,7 @@ export default {
       this.loginStatus = "Loading..";
       axios
         .request({
-          url: "http://localhost:8080/login",
+          url: "http://127.0.0.1:5000/api/login",
           method: "POST",
           headers: {
             "Content-Type": "application/json"
@@ -72,7 +72,7 @@ export default {
           this.loginStatus = "Success";
           cookies.set("loginToken", response.data.loginToken);
           cookies.set("user", response.data.userId);
-          this.$router.push("/entry");
+          this.$router.push("/profile");
         })
         .catch(error => {
           console.log(error);

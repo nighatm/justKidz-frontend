@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn @click="deleteMessage()" elevation="2">Delete Message ?</v-btn>
+    <v-btn @click="deleteActivity()" elevation="2">Delete Activity</v-btn>
   </div>
 </template>
 
@@ -8,25 +8,25 @@
 import axios from "axios";
 import cookies from "vue-cookies";
 export default {
-  name: "message-delete",
+  name: "activity-delete",
   props: {
-    messageId: {
+    activityId: {
       type: Number,
       required: true,
     },
   },
   methods: {
-    deleteMessage: function () {
+    deleteActivity: function () {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/message",
+          url: "http://127.0.0.1:5000/api/activity",
           method: "DELETE",
           headers: {
             "Content-Type": "application/json",
           },
           data: {
             loginToken: cookies.get("loginToken"),
-            messageId: this.messageId,
+            activityId: this.activityId,
           },
         })
         .then((response) => {
