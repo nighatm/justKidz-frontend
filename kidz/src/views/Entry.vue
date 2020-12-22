@@ -1,14 +1,18 @@
 <template>
-  <div class="container">
+  <div class="container" >
     <entry-create />
     <br />
     <v-row align="center" justify="space-around">
       <v-btn color="#00796B"  dark x-large elevation="2" @click="getEntry()"
         >Show Entries for child  <v-icon>mouse</v-icon> </v-btn></v-row>
-        <br>
-        
-    <br />
-    <v-simple-table height="300px">
+      <br>
+      <v-row align="center" justify="space-around">
+      <v-btn color="#00796B"  dark small elevation="2" @click="getEntry()"
+        >Show Entries for child </v-btn></v-row>
+        <br> <br />
+
+   
+    <v-simple-table height="300px" class="hidden-md-and-down">
       <thead background-color="pink">
         <tr>
           <th style="background-color: pink" class="text-left">ID</th>
@@ -34,21 +38,19 @@
           <td>
             <entry-edit
               v-if="isOwned(entryObject.userId)"
-              :entryId="entryObject.userId"
+              :entryId="entryObject.id"
             />
           </td>
           <td>
             <entry-delete
               v-if="isOwned(entryObject.userId)"
-              :entryId="entryObject.userId"
+              :entryId="entryObject.id"
             />
           </td>
         </tr>
       </tbody>
     </v-simple-table>
-    <!-- <div v-for="entry in entries" :key="entry.id">
-      <entry-view :entryObject="entry"> </entry-view>
-    </div> -->
+    
   </div>
 </template>
 
@@ -105,5 +107,9 @@ export default {
 <style scoped>
 .container {
   margin: 20px;
+}
+* {
+  margin: 0;
+  padding: 0;
 }
 </style>

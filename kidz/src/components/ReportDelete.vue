@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn @click="deleteReport()" elevation="2">Delete Report </v-btn>
+    <v-btn small @click="deleteReport()" elevation="2">Delete </v-btn>
   </div>
 </template>
 

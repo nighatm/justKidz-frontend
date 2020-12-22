@@ -4,11 +4,6 @@
       <v-btn small @click="shouldShow = !shouldShow"> Edit </v-btn>
     </v-row>
     <div v-if="shouldShow">
-      <!-- <v-text-field box v-model="entryId"> </v-text-field>
-      <v-text-field box v-model="title"> </v-text-field>
-      <v-text-field box v-model="description"> </v-text-field>
-      <v-text-field box v-model="photo"> </v-text-field>
-      <v-btn  @click="editEntry()"> Submit </v-btn> -->
       <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on, attrs }">
           <v-btn
@@ -24,7 +19,6 @@
         <v-card>
           <v-toolbar dark color="#0096AF">
             <v-btn icon dark @click="dialog = false">
-              <!-- how to close the dialog box -->
               <v-icon>mdi-close</v-icon>
             </v-btn>
           </v-toolbar>
@@ -84,6 +78,7 @@ export default {
       title: "",
       description: "",
       photo: "",
+      dialog: false,
     };
   },
   props: {

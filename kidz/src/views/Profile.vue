@@ -1,17 +1,19 @@
 <template>
-  <div class="cernter-alignment">
+  <div >
     <div v-if="loginToken != undefined">
-    
-      <h2 class="header-text">Update Profile</h2>
+    <h1 class="heading-style">`Update Profile`</h1>
       <br />
-      <router-link to="/">Go to Home Page</router-link> | --------------
+
+      <router-link class="link-text" to="/">Go to Home Page</router-link> | --------------------
       |
 
-      <router-link to="/logout">Logout <br /></router-link>
+      <router-link class="link-text" to="/logout">Logout <br /></router-link>
       <br />
 
       <profile-edit />
+      <br><br/>
       <profile-delete />
+      <br><br><br>
    
     </div>
     <div v-else>
@@ -45,5 +47,15 @@ export default {
 </script>
 
 <style scoped>
-
+.heading-style{
+ text-align: center;
+ color:#263238 ;
+ font-family: Garamond, serif;
+}
+.link-text{
+   text-align: center;
+  color: #0096AF ;
+ font-family: Garamond, serif;
+ font-size: 22px;
+}
 </style>

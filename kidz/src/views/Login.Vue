@@ -1,84 +1,81 @@
+<template>
+  <v-card class="mx-auto" style="max-width: 500px">
+    <v-toolbar color="cyan accent-4" cards dark flat>
+      <v-btn icon>
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
+      <v-card-title class="title font-weight-regular"> Login </v-card-title>
+    </v-toolbar>
 
-  <template>
-  <div class="cernter-alignment">
-
-    <h1 class="header-text">Welcome to JustKidz App!</h1>
-    <br />
-    <h2 class="header-text">Login</h2>
-    <div id="login-form">
-      <p>Email</p>
-      <input
-        type="text"
-        placeholder="Enter email"
-        id="email-input"
-        class="form-input"
+    <v-form ref="form" v-model="form" class="pa-4 pt-6">
+      <v-text-field
         v-model="email"
-      />
-      <p>Password</p>
-      <input
-        type="password"
-        placeholder="Enter password"
-        id="password-input"
-        class="form-input"
-        v-model="password"
-      />
-      <button class="tw-button" @click="loginUser">Login</button>
-      <br />
+        label="Enter Valid Email Address"
+        style="min-height: 96px"
+        type="email"
+      ></v-text-field>
 
+      <v-text-field
+        v-model="password"
+        label="Password"
+        style="min-height: 96px"
+        type="password"
+      ></v-text-field>
       <h3>{{ loginStatus }}</h3>
       <router-link to="/"> Home </router-link>
 
       <router-link to="/signup" id="signup-link">
         New User? Sign up here</router-link
       >
-     
-    </div>
-  </div>
+    </v-form>
+
+    <v-btn color="cyan" dark elevation="2" @click="loginUser()"
+      >Login! <v-icon>mouse</v-icon></v-btn
+    >
+  </v-card>
 </template>
 
 <script>
 import axios from "axios";
 import cookies from "vue-cookies";
 
-
 export default {
   name: "login-page",
- 
 
   data() {
     return {
       email: "",
       password: "",
-      loginStatus: ""
+      loginStatus: "",
+      form:false,
     };
   },
   methods: {
-    loginUser: function() {
+    loginUser: function () {
       this.loginStatus = "Loading..";
       axios
         .request({
           url: "http://127.0.0.1:5000/api/login",
           method: "POST",
           headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
           },
           data: {
             email: this.email,
-            password: this.password
-          }
+            password: this.password,
+          },
         })
-        .then(response => {
+        .then((response) => {
           console.log(response);
           this.loginStatus = "Success";
           cookies.set("loginToken", response.data.loginToken);
           cookies.set("user", response.data.userId);
           this.$router.push("/profile");
         })
-        .catch(error => {
+        .catch((error) => {
           console.log(error);
-          this.status = "Login Error!";
         });
-    }
-  }
+    },
+  },
 };
 </script>

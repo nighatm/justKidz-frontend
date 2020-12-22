@@ -5,14 +5,12 @@
     <v-form>
       <v-text-field
         v-model="message_to"
-        :rules="emailRules"
         label="E-mail"
         required
       ></v-text-field>
 
       <v-text-field
         v-model="subject"
-        :rules="nameRules"
         label="Subject"
         required
       ></v-text-field>
@@ -25,7 +23,7 @@
       ></v-textarea>
     </v-form>
 
-    <v-btn @click="postMessage()">Send Message</v-btn>
+    <v-btn  color="cyan"  dark elevation="2" @click="postMessage()">Send Message</v-btn>
   </div>
 </template>
 
@@ -75,4 +73,4 @@ export default {
 </script>
 
 <style scoped>
-</style>nb
+</style>

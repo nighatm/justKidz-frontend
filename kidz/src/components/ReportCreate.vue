@@ -1,24 +1,42 @@
 <template>
   <div>
-    <h4>{{ kidzStatus }}</h4>
-    <p>Enter Classroom : </p>
-    <input
-      type="text"
-      placeholder="............"
-      id="email-input"
-      class="text-format"
-      v-model="classroom"
-    />
-    <br />
-    <p>Actions : </p>
-    <input
-      type="text"
-      placeholder="Enter Title for Entry"
-      id="email-input"
-      class="text-format"
-      v-model="title"
-    />
-    <v-btn @click="postReport()">Create Report</v-btn>
+     <h1 class="heading-style">`Check  Reports for your Child`</h1>
+     <br><br>
+    <p class="p-text">
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo tempore,
+      eos deleniti excepturi atque minus repellat non itaque expedita cupiditate
+      nisi quasi tenetur, et consequuntur ipsa quos optio corporis fuga!
+      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo tempore,
+      eos deleniti excepturi atque minus repellat non itaque expedita cupiditate
+      nisi quasi tenetur, et consequuntur ipsa quos optio corporis fuga!
+    </p>
+    <v-form>
+      <h4>{{ kidzStatus }}</h4>
+      <v-container>
+        <v-row>
+          <v-col cols="12" md="4">
+            <v-text-field
+              v-model="classroom"
+              :counter="100"
+              label="Enter Classroom "
+            ></v-text-field>
+          </v-col>
+        </v-row>
+        <v-row>
+          <v-col cols="12" md="8">
+            <v-textarea
+              clearable
+              clear-icon="mdi-close-circle"
+              label="Describe Actions"
+              :counter="250"
+              value="This is clearable text."
+              v-model="actions"
+            ></v-textarea>
+          </v-col>
+        </v-row>
+         </v-container>
+    </v-form>
+    <v-btn color="#00796B"  dark x-large elevation="2" @click="postReport()">Create Report</v-btn>
   </div>
 </template>
 
@@ -32,7 +50,7 @@ export default {
     return {
       classroom: "",
       actions: "",
-      kidzStatus: "Entry!",
+      kidzStatus: "Start Entering Data!",
     };
   },
   methods: {
@@ -67,4 +85,15 @@ export default {
 </script>
 
 <style scoped>
+
+.heading-style{
+ text-align: center;
+ color:#263238 ;
+ font-family: Garamond, serif;
+}
+.p-text{
+  color:#263238;
+ font-family: Josefin Sans;
+ font-size: 22px;
+}
 </style>

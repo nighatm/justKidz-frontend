@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn @click="deleteActivity()" elevation="2">Delete Activity</v-btn>
+    <v-btn small @click="deleteActivity()" elevation="2">Delete Activity</v-btn>
   </div>
 </template>
 

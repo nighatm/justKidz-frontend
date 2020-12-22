@@ -1,19 +1,67 @@
 <template>
   <div class="container">
-    <h1>Report page</h1>
     <report-create />
-    <v-btn elevation="2" @click="getReport()">Get Reports</v-btn>
+    <br />
+    <v-row align="center" justify="space-around">
+      <v-btn color="#00796B" dark x-large elevation="2" @click="getReport()"
+        >Get Reports <v-icon>mouse</v-icon></v-btn
+      >
+    </v-row>
+    <br>
+    <v-row align="center" justify="space-around">
+    <v-btn color="#00796B" dark small elevation="2" @click="getReport()"
+      >Get Reports
+    </v-btn> </v-row>
+    <br>
+    <!-- Table for viewing report data -->
+    <v-simple-table height="300px" class="hidden-md-and-down">
+      <thead background-color="pink">
+        <tr>
+          <th style="background-color: pink" class="text-left">ID</th>
+          <th style="background-color: pink" class="text-left">
+            <v-icon> schedule </v-icon>
+          </th>
+          <th style="background-color: pink" class="text-left">Classroom</th>
+          <th style="background-color: pink" class="text-left">Actions</th>
+          <th style="background-color: pink" class="text-left">
+            <v-icon> mdi-pencil </v-icon>
+          </th>
+          <th style="background-color: pink" class="text-left">
+            <v-icon>delete</v-icon>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="reportObject in reports" :key="reportObject.id">
+          <td>{{ reportObject.id }}</td>
+          <td>{{ reportObject.createdAt }}</td>
+          <td>{{ reportObject.classroom }}</td>
+          <td>{{ reportObject.actions }}</td>
 
-    <div v-for="report in reports" :key="report.id">
-      <report-view :reportObject="report"> </report-view>
-    </div>
+          <td>
+            <report-edit
+              v-if="isOwned(reportObject.userId)"
+              :reportId="reportObject.reportId"
+            />
+          </td>
+          <td>
+            <report-delete
+              v-if="isOwned(reportObject.userId)"
+              :reportId="reportObject.reportId"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </v-simple-table>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import cookies from "vue-cookies"
 import ReportCreate from "../components/ReportCreate.vue";
-import ReportView from "../components/ReportView.vue";
+import ReportEdit from "../components/ReportEdit.vue";
+import ReportDelete from "../components/ReportDelete.vue";
 
 export default {
   name: "report-page",
@@ -24,12 +72,16 @@ export default {
   },
   components: {
     ReportCreate,
-    ReportView,
+    ReportEdit,
+    ReportDelete,
   },
   mounted: function () {
     this.getReport();
   },
   methods: {
+    isOwned: function (reportId) {
+      return cookies.get("user") == reportId;
+    },
     getReport: function () {
       axios
         .request({

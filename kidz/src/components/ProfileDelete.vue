@@ -1,29 +1,34 @@
 <template>
-  <div id="delete-account">
-    <h2 id="text-color">Want to Delete your account?</h2>
-    <p>Enter Your Email</p>
-    <input
-      type="text"
-      placeholder="Enter email"
-      id="email-input"
-      class="form-input"
-      v-model="email"
-    />
-    <p>Enter Password</p>
-    <input
-      type="password"
-      placeholder="Enter password"
-      id="password-input"
-      class="form-input"
-      v-model="password"
-    />
-    <br />
-    <br />
-    <button class="tw-button" @click="deleteUser">
-      Delete account...
-    </button>
-    <h3>{{ updateStatus }}</h3>
-  </div>
+<v-card class="mx-auto" style="max-width: 500px">
+    <v-toolbar color="cyan accent-4" cards dark flat>
+      <v-btn icon>
+        <v-icon>mdi-arrow-left</v-icon>
+      </v-btn>
+      <v-card-title class="title font-weight-regular"> Want to delete your account? </v-card-title>
+    </v-toolbar>
+    <v-form ref="form" v-model="form" class="pa-4 pt-6">
+      <v-text-field
+        v-model="email"
+        filled
+        color="deep-purple"
+        label="Enter Valid Email Address"
+        style="min-height: 96px"
+        type="email"
+      ></v-text-field>
+      <v-text-field
+        v-model="password"
+        filled
+        color="deep-purple"
+        label="Password"
+        style="min-height: 96px"
+        type="password"
+      ></v-text-field>
+    </v-form>
+    <v-btn color="cyan" dark elevation="2" @click="deleteUser()"
+      >Delete Account... <v-icon>mouse</v-icon></v-btn
+    >
+  </v-card>
+ 
 </template>
 
 <script>
@@ -36,6 +41,7 @@ export default {
       email: "",
       password: "",
       updateStatus: "",
+      form: false,
       loginToken: cookies.get("loginToken")
     };
   },

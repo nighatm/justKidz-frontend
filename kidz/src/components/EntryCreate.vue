@@ -14,7 +14,7 @@
       <h4>{{ kidzStatus }}</h4>
       <v-container>
         <v-row>
-          <v-col cols="2" md="4">
+          <v-col cols="12" md="4">
             <v-text-field
               v-model="childname"
               :counter="100"
@@ -23,7 +23,7 @@
             ></v-text-field>
           </v-col>
 
-          <v-col cols="2" md="4">
+          <v-col cols="12" md="4">
             <v-text-field
               v-model="title"
               :counter="100"
@@ -33,7 +33,7 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="2" md="8">
+          <v-col cols="12" md="8">
             <v-textarea
               clearable
               clear-icon="mdi-close-circle"
@@ -45,7 +45,7 @@
           </v-col>
         </v-row>
         <v-row>
-          <v-col cols="2" md="4">
+          <v-col cols="12" md="4">
             <v-text-field
               v-model="photo"
               label="URL for  Image "
@@ -78,7 +78,7 @@ export default {
       title: "",
       description: "",
       photo: "",
-      kidzStatus: "Enter below!",
+      kidzStatus: "Start Entering Data!",
     };
   },
   methods: {

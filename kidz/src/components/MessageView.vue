@@ -17,19 +17,7 @@
         
         </v-card-title>
         <v-timeline align-top dense>
-          <v-timeline-item
-            v-for="message in messages"
-            :key="message.id"
-            :color="message.color"
-            small
-          >
-            <!-- <div>
-              <div class="font-weight-normal">
-                <strong>{{ message.message_from }}</strong> @{{ message.time }}
-              </div>
-              <div>{{ message.message }}</div>
-            </div> -->
-          </v-timeline-item>
+         
         </v-timeline>
         <!-- <v-list> -->
         <!-- <div class="entry-container"> -->
