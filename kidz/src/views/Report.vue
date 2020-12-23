@@ -122,7 +122,7 @@ export default {
     getReport: function () {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/report",
+          url: "https:/justkidz.ml/api/report",
           method: "GET",
 
           headers: {

@@ -85,7 +85,7 @@ export default {
       this.kidzStatus = "Entering Data!";
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/activity",
+          url: "https:/justkidz.ml/api/activity",
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -121,9 +121,7 @@ export default {
   color: #263238;
   font-family: Josefin Sans;
   font-size: 22px;
-  /* text-align: justify; */
-  /* margin-right: 2vh; */
-  /* margin-left: 2vh; */
+
 }
 .form-headings {
   text-align: center;

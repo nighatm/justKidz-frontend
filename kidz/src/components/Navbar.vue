@@ -32,11 +32,6 @@
           <v-icon color="pink" class="mr-2" right>face</v-icon>
         </v-btn>
 
-        <!-- <v-btn >
-          <span>signout</span>
-          <v-icon right> exit_to_app </v-icon>
-        </v-btn> -->
-
         <template v-slot:extension>
           <v-tabs color="#EAC800 " align-with-title>
             <v-tab to="/login">Login</v-tab>
@@ -47,15 +42,9 @@
           </v-tabs>
         </template>
       </v-app-bar>
-
       <v-container> </v-container>
-      <!-- </v-sheet> -->
-      <!-- <footer-page/> -->
     </v-card>
-
-   
-    <div>
-      
+    <div>   
 
     <v-app-bar class="hidden-sm-and-up" color="#00796B" dark prominent>
       <v-app-bar-nav-icon ><v-img
@@ -63,8 +52,6 @@
                 width="55"
                 src="../assets/logoJKF.png"
                 alt="logoImg"/></v-app-bar-nav-icon>
-
-
       <v-spacer></v-spacer>
 
       <v-btn to="/" icon>
@@ -84,39 +71,22 @@
             <v-tab to="/activity"> Activity</v-tab>
             <v-tab to="/entry">Entry</v-tab>
             <v-tab  to="/report">Report</v-tab>
-        
         </template>  
     </v-app-bar>
-
-          
-
     
     </div>
   </div>
-</template>
-
-    
+</template> 
  
-
 <script>
-// import FooterPage from "../components/Footer.vue";
-// import EntryCreate from "../components/EntryCreate.vue"
-// import HomeDrawer from "../components/Drawer.vue"
 
 export default {
   name: "toolbar",
   components: {
-    //  HomeDrawer
   },
 
-  data: () => ({
-     
-    }),
-
-    
 };
 </script>
-
 <style scoped>
 * {
   margin: 0;

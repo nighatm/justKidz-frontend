@@ -104,7 +104,7 @@ export default {
       this.kidzStatus = "Entering Data!";
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/entry",
+          url: "https:/justkidz.ml/api/entry",
           method: "POST",
           headers: {
             "Content-Type": "application/json",

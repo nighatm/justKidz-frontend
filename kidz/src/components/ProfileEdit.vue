@@ -57,11 +57,9 @@
 <script>
 import axios from "axios";
 import cookies from "vue-cookies";
-// import FooterPage from "../components/Footer.vue";
 
 export default {
    components: {
-    // FooterPage
   },
   data() {
     return {
@@ -78,7 +76,7 @@ export default {
     updateUser: function () {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/users",
+          url: "https:/justkidz.ml/api/users",
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
@@ -94,7 +92,6 @@ export default {
         .then((response) => {
           console.log(response);
           this.updateStatus = "Success";
-          // this.$router.push("/login");
         })
         .catch((error) => {
           console.log(error);

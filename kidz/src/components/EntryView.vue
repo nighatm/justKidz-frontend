@@ -10,10 +10,6 @@
         </tr>
       </thead>
       <tbody>
-        <!-- <tr
-          v-for="item in desserts"
-          :key="item.name"
-        > -->
         <tr>
           <td>{{ entryObject.childname }}</td>
           <td>{{ entryObject.title }}</td>
@@ -34,7 +30,6 @@
     <h3>{{ entryObject.description }}</h3>
     <h3>{{ entryObject.photo }}</h3> -->
     <entry-delete v-if="isOwned" :entryId="entryObject.id" />
-    <!-- <entry-delete :entryId="entryObject.entryId" /> -->
      <entry-edit 
       @update-entry="updateEntry" v-if="isOwned" :entryId="entryObject.id" />
   </div>

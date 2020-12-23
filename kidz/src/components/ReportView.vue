@@ -3,7 +3,6 @@
     <h3>{{ reportObject.classroom }}</h3>
     <h3>{{ reportObject.actions }}</h3>
     <report-delete v-if="isOwned" :reportId="reportObject.id" />
-    <!-- <report-delete :reportId="entryObject.reportId" /> -->
     <report-edit
       @update-report="updateReport"
       v-if="isOwned"

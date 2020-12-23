@@ -91,7 +91,7 @@ export default {
     editEntry: function () {
       axios
         .request({
-          url: "http://127.0.0.1:5000/api/entry",
+          url: "https:/justkidz.ml/api/entry",
           method: "PATCH",
           headers: {
             "Content-Type": "application/json",
