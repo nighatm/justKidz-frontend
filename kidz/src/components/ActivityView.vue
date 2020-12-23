@@ -4,7 +4,6 @@
     <h3>{{ activityObject.activityName }}</h3>
     <h3>{{ activityObject.description }}</h3>
     <activity-delete v-if="isOwned" :activityId="activityObject.id" />
-    <!-- <activity-delete :activityId="activityObject.activityId" /> -->
     <activity-edit
       @update-activity="updateActivity"
       v-if="isOwned"

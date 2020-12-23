@@ -1,16 +1,13 @@
 <template>
-  <div class="container">
-    <activity-create />
+  <div>
+    <activity-create class="mr-3 hidden-xs-only" />
+    <activity-create class="hidden-sm-and-up" style="max-width: 330px" />
+    <v-btn color="#00796B" dark elevation="2" @click="getActivity()"
+      >Get Activities
+    </v-btn>
     <br />
-    <v-row align="center" justify="space-around">
-      <v-btn class="xs-8 md-4 lg-2" color="#00796B" dark x-large elevation="2" @click="getActivity()"
-        >Get Activities <v-icon>mouse</v-icon></v-btn
-      ></v-row
-    >
     <br />
-    <v-btn color="#00796B" dark small elevation="2" @click="getActivity()"
-      >Get Activities</v-btn>
-    <v-simple-table height="300px" class="hidden-md-and-down">
+    <v-simple-table height="300px" class="mr-3 hidden-xs-only tab-align">
       <thead background-color="pink">
         <tr>
           <th style="background-color: pink" class="text-left">ID</th>
@@ -33,7 +30,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="activityObject in activities" :key="activityObject.activityId">
+        <tr
+          v-for="activityObject in activities"
+          :key="activityObject.activityId"
+        >
           <td>{{ activityObject.activityId }}</td>
           <td>{{ activityObject.createdAt }}</td>
           <td>{{ activityObject.activityName }}</td>
@@ -54,21 +54,58 @@
         </tr>
       </tbody>
     </v-simple-table>
-
-    <!-- <div v-for="activity in activities" :key="activity.id">
-      <activity-view :activityObject="activity"> </activity-view>
-
-    </div> -->
+    <!-- for mobile screen with less -->
+    <v-simple-table height="300px" class="hidden-sm-and-up tab-align">
+      <thead background-color="pink">
+        <tr>
+          <th style="background-color: pink" class="text-left">
+            Activity Type
+          </th>
+          <th style="background-color: pink" class="text-left">
+            Activity NAme
+          </th>
+          <th style="background-color: pink" class="text-left">
+            <v-icon> mdi-pencil </v-icon>
+          </th>
+          <th style="background-color: pink" class="text-left">
+            <v-icon>delete</v-icon>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="activityObject in activities"
+          :key="activityObject.activityId"
+        >
+          <td>{{ activityObject.activityName }}</td>
+          <td>{{ activityObject.activityType }}</td>
+          <td>
+            <activity-edit
+              v-if="isOwned(activityObject.userId)"
+              :activityId="activityObject.activityId"
+            />
+          </td>
+          <td>
+            <activity-delete
+              v-if="isOwned(activityObject.userId)"
+              :activityId="activityObject.activityId"
+            />
+          </td>
+        </tr>
+      </tbody>
+    </v-simple-table>
+    <div><br /><br /></div>
+    <footer-page></footer-page>
   </div>
 </template>
 
 <script>
 import axios from "axios";
+import cookies from "vue-cookies";
 import ActivityCreate from "../components/ActivityCreate.vue";
-// import ActivityView from "../components/ActivityView.vue";
 import ActivityEdit from "../components/ActivityEdit.vue";
 import ActivityDelete from "../components/ActivityDelete.vue";
-import cookies from "vue-cookies";
+import FooterPage from "../components/Footer.vue";
 
 export default {
   name: "activity-page",
@@ -79,9 +116,9 @@ export default {
   },
   components: {
     ActivityCreate,
-    // ActivityView,
     ActivityEdit,
     ActivityDelete,
+    FooterPage,
   },
   mounted: function () {
     this.getActivity();
@@ -113,7 +150,9 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  margin: 20px;
+.tab-align {
+  text-align: justify;
+  margin-right: 2vh;
+  margin-left: 2vh;
 }
 </style>

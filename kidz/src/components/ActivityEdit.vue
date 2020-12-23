@@ -1,15 +1,10 @@
 <template>
   <div>
     <v-row>
-    <v-btn small @click="shouldShow = !shouldShow"> Edit  </v-btn>
+      <v-btn small @click="shouldShow = !shouldShow"> Edit </v-btn>
     </v-row>
     <div v-if="shouldShow">
-      <!-- <v-text-field box v-model="activityType"> </v-text-field>
-      <v-text-field box v-model="activityName"> </v-text-field>
-      <v-text-field box v-model="description"> </v-text-field>
-      <v-btn @click="editActivity()"> Submit </v-btn> -->
-
-       <v-dialog v-model="dialog" persistent max-width="600px">
+      <v-dialog v-model="dialog" persistent max-width="600px">
         <template v-slot:activator="{ on, attrs }">
           <v-btn
             color="#0096AF"
@@ -56,14 +51,13 @@
                   label=" Activity Name"
                 ></v-text-field>
               </v-row>
-               <v-row>
+              <v-row>
                 <v-text-field
                   v-model="description"
                   :counter="250"
                   label=" Description"
                 ></v-text-field>
               </v-row>
-             
               <v-col>
                 <v-btn color="#0096AF" dark @click="editActivity()">
                   Submit
@@ -90,7 +84,6 @@ export default {
       activityName: "",
       description: "",
       dialog: false,
-     
     };
   },
   props: {
@@ -114,12 +107,16 @@ export default {
             activityType: this.activityType,
             activityName: this.activityName,
             description: this.description,
-           
           },
         })
         .then((response) => {
           console.log(response);
-          this.$emit("update-activity", this.activityType, this.activityName, this.description);
+          this.$emit(
+            "update-activity",
+            this.activityType,
+            this.activityName,
+            this.description
+          );
           this.shouldShow = false;
         })
         .catch((error) => {

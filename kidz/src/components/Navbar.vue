@@ -57,14 +57,10 @@
     <div>
       
 
-    <v-app-bar
-     color="#00796B"
-     dark
-      prominent
-    >
+    <v-app-bar class="hidden-sm-and-up" color="#00796B" dark prominent>
       <v-app-bar-nav-icon ><v-img
                 id="kidz-logo"
-                width="65"
+                width="55"
                 src="../assets/logoJKF.png"
                 alt="logoImg"/></v-app-bar-nav-icon>
 
@@ -84,10 +80,10 @@
               <v-icon class="mr-1" right>login</v-icon>
             </v-btn>
            <template v-slot:extension>
-           <v-tab><v-icon to="/profile" medium>face</v-icon></v-tab>
-            <v-tab to="/activity">Activity</v-tab>
+           <v-tab><v-icon class="mr-8" to="/profile" medium>face</v-icon></v-tab>
+            <v-tab to="/activity"> Activity</v-tab>
             <v-tab to="/entry">Entry</v-tab>
-            <v-tab to="/report">Report</v-tab>
+            <v-tab  to="/report">Report</v-tab>
         
         </template>  
     </v-app-bar>

@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <div class="xs-8 md-4 lg-2">
     <h4>{{ kidzStatus }}</h4>
-
-    <v-form>
+    <v-form class="xs-8 md-4 lg-2 form-headings"> 
       <v-text-field
         v-model="message_to"
         label="E-mail"
@@ -22,7 +21,6 @@
         value="This is clearable text."
       ></v-textarea>
     </v-form>
-
     <v-btn  color="cyan"  dark elevation="2" @click="postMessage()">Send Message</v-btn>
   </div>
 </template>
@@ -73,4 +71,17 @@ export default {
 </script>
 
 <style scoped>
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.form-headings{
+  text-align: center;
+  color: #0096af;
+  font-family: Garamond, serif;
+  font-size: 28px;
+  margin-right: 2vh;
+  margin-left: 2vh;
+}
 </style>

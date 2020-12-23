@@ -1,53 +1,68 @@
 <template>
-  <div>
-    <h1 class="heading-style">`Check  Activities for your Child`</h1>
-    <br><br>
+  <div class="xs-8 md-4 lg-2">
+    <br />
+    <h1 class="heading-style">`Check Activities for your Child`</h1>
+    <h3 class="heading-style">`Look What am doing Today`</h3>
+    <br />
     <p class="p-text">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo tempore,
-      eos deleniti excepturi atque minus repellat non itaque expedita cupiditate
-      nisi quasi tenetur, et consequuntur ipsa quos optio corporis fuga!
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nemo tempore,
-      eos deleniti excepturi atque minus repellat non itaque expedita cupiditate
-      nisi quasi tenetur, et consequuntur ipsa quos optio corporis fuga!
-    </p>
-    <v-form>
-    <h4>{{ kidzStatus }}</h4>
-      <v-container>
-         <v-row>
-          <v-col cols="12" md="4">
-            <v-text-field
-              v-model="activityType"
-              :counter="100"
-              label="Enter Activity Type "
-            ></v-text-field>
-          </v-col>
-
-          <v-col cols="12" md="4">
-            <v-text-field
-              v-model="activityName"
-              :counter="100"
-              label="Enter Activity Name" 
-            ></v-text-field>
-          </v-col>
-        </v-row>
+      Look I'm doing PM today! PM: Welcome back on this wonderful Monday arctic
+      classroom! We worked on our listening and following directions skills by
+      by singing and dancing to theFollow Me song! We said our names, chose a
+      friend to say hello to and asked them how are you? We explored expressing
+      our different feelings to each other! We also sang our calendar songs and
+      talked about the cloudy weather! During centre time we worked on our
+      colour recognition and fine motor skills by sorting different coloured
+      animals into their corresponding buckets using clothespins to grab! We
+      also worked on our following directions skills as well as hand strength
+      and fine motor skills by glueing strips together to make the land sky and
+      sea ! Lastly we worked on our hand strength and fine motor skills by
+      cutting out different vehicles that we will glue to the backgrounds that
+      we made tomorrow ! We also had gym class today we did ring around the
+      Rosie some movement songs and worked on our gross motor skills by doing
+      some follow the Leader activities, what time is it Mr. Wolf as well as
+      playing with balls with our friends! We finish the day by saying goodbye
+      and worked on our choice making and requesting skills by making a choice
+      between bubbles and tickles!
+      <v-form class="xs-8 md-4 lg-2 form-headings">
+        <h4>{{ kidzStatus }}</h4>
+        <v-container class="xs-8 md-4 lg-2">
           <v-row>
-          <v-col cols="12" md="8">
-            <v-textarea
-              clearable
-              clear-icon="mdi-close-circle"
-              label="Write Description"
-              :counter="250"
-              value="This is clearable text."
-              v-model="description"
-            ></v-textarea>
-          </v-col>
-   <v-col>
-    <v-btn color="#00796B"  dark x-large elevation="2" @click="postActivity()">Create Activity</v-btn>
-   </v-col>
-    </v-row>
-      </v-container>
-    </v-form>
-    <br><br>
+            <v-col cols="12" md="4">
+              <v-text-field
+                v-model="activityType"
+                :counter="100"
+                label="Enter Activity Type "
+              ></v-text-field>
+            </v-col>
+            <v-col cols="12" md="4">
+              <v-text-field
+                v-model="activityName"
+                :counter="100"
+                label="Enter Activity Name"
+              ></v-text-field>
+            </v-col>
+          </v-row>
+          <v-row>
+            <v-col cols="12" md="8">
+              <v-textarea
+                clearable
+                clear-icon="mdi-close-circle"
+                label="Write Description"
+                :counter="250"
+                value="This is clearable text."
+                v-model="description"
+              ></v-textarea>
+            </v-col>
+            <v-col>
+              <v-btn color="grey" x-large elevation="2" @click="postActivity()"
+                >Create Activity</v-btn
+              >
+            </v-col>
+          </v-row>
+        </v-container>
+      </v-form>
+      <br />
+    </p>
   </div>
 </template>
 
@@ -97,15 +112,25 @@ export default {
 </script>
 
 <style scoped>
-
-.heading-style{
- text-align: center;
- color:#263238 ;
- font-family: Garamond, serif;
+.heading-style {
+  text-align: center;
+  color: #263238;
+  font-family: Garamond, serif;
 }
-.p-text{
-  color:#263238;
- font-family: Josefin Sans;
- font-size: 22px;
+.p-text {
+  color: #263238;
+  font-family: Josefin Sans;
+  font-size: 22px;
+  /* text-align: justify; */
+  /* margin-right: 2vh; */
+  /* margin-left: 2vh; */
+}
+.form-headings {
+  text-align: center;
+  color: #0096af;
+  font-family: Garamond, serif;
+  font-size: 28px;
+  margin-right: 2vh;
+  margin-left: 2vh;
 }
 </style>

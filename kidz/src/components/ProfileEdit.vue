@@ -1,4 +1,5 @@
 <template>
+<div>
   <v-card class="mx-auto" style="max-width: 500px">
     <v-toolbar color="cyan accent-4" cards dark flat>
       <v-btn icon>
@@ -49,12 +50,19 @@
       >
     </v-form>
   </v-card>
+
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 import cookies from "vue-cookies";
+// import FooterPage from "../components/Footer.vue";
+
 export default {
+   components: {
+    // FooterPage
+  },
   data() {
     return {
       email: "",

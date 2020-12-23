@@ -1,56 +1,60 @@
 <template>
-  <div class="container">
-    <v-container>
-      <v-row justify="space-around">
-        <v-card width="2000">
-          <v-toolbar color="cyan" dark>
-            <v-toolbar-title>Message Center</v-toolbar-title>
-            <v-spacer></v-spacer>
-           
-          </v-toolbar>
-          <message-create />
-          <br>
-        </v-card>
+  <div class="xs-8 md-4 lg-2">
+    <br /><br />
+    <v-simple-table class="xs-12 md-4 lg-2 tab-align" height="400px">
+      <v-row>
+        <v-col>
+          <v-container>
+            <v-card>
+              <v-toolbar color="cyan" dark>
+                <v-toolbar-title>Message Center</v-toolbar-title>
+                <v-spacer></v-spacer>
+              </v-toolbar>
+              <message-create class="mr-3 hidden-xs-only" />
+              <message-create
+                class="hidden-sm-and-up"
+                style="max-width: 330px"
+              />
+              <br />
+            </v-card>
+          </v-container>
+        </v-col>
+        <v-col> </v-col>
+        <v-col class="mr-3 hidden-sm-and-down">
+          <v-img
+            width="400px"
+            height="400"
+            src="https://image.shutterstock.com/z/stock-vector-cartoon-grandpa-with-joyful-kids-and-message-banner-vector-illustration-673842838.jpg"
+          />
+        </v-col>
       </v-row>
-    </v-container>
-    <br>
-    <!-- <v-img
-          height="10%"
-          src="https://image.shutterstock.com/z/stock-vector-cartoon-grandpa-with-joyful-kids-and-message-banner-vector-illustration-673842838.jpg"
-        /> -->
-    <!-- <h1>Message Center</h1> -->
+    </v-simple-table>
 
-    <!-- <v-toolbar color="cyan" dark>
-      <v-toolbar-title>Inbox</v-toolbar-title>
-
-      <v-spacer></v-spacer>
-
-      <v-btn icon>
-        <v-icon>mdi-magnify</v-icon>
+    <v-row class="mr-3 hidden-xs-only">
+      <v-btn color="#00796B" dark x-large elevation="2" @click="getMessage()"
+        >Check Messages <v-icon>mouse</v-icon></v-btn
+      >
+    </v-row>
+    <v-row class="hidden-sm-and-up">
+      <v-btn color="#00796B" dark medium elevation="2" @click="getMessage()"
+        >Get Messages
       </v-btn>
-    </v-toolbar>
+    </v-row>
+    <br />
 
-    <v-img
-      height="150px"
-      src="https://image.shutterstock.com/z/stock-vector-cartoon-grandpa-with-joyful-kids-and-message-banner-vector-illustration-673842838.jpg"
-    /> -->
-     <v-btn  color="#00796B"  dark x-large elevation="2" @click="getMessage()">Check Messages  <v-icon>mouse</v-icon></v-btn>
-      <br> <br />
-<v-simple-table height="300px" >
-
+    <v-simple-table class="xs-12 md-4 lg-2 tab-align" height="300px">
       <thead background-color="pink">
         <tr>
-          <th style="background-color: #00E5FF" class="text-left">MessageId</th>
-          <th style="background-color: #00E5FF" class="text-left"><v-icon> schedule </v-icon></th>
-          <th style="background-color: #00E5FF" class="text-left">Subject</th>
-          <th style="background-color: #00E5FF" class="text-left">Message</th>
-          <th style="background-color: #00E5FF" class="text-left">Delete</th>
-
+          <th style="background-color: #00e5ff" class="text-left">
+            <v-icon> schedule </v-icon>
+          </th>
+          <th style="background-color: #00e5ff" class="text-left">Subject</th>
+          <th style="background-color: #00e5ff" class="text-left">Message</th>
+          <th style="background-color: #00e5ff" class="text-left">Delete</th>
         </tr>
       </thead>
-         <tbody>
-       <tr v-for="messageObject in messages" :key="messageObject.id">
-          <td>{{ messageObject.id }}</td>
+      <tbody>
+        <tr v-for="messageObject in messages" :key="messageObject.id">
           <td>{{ messageObject.createdAt }}</td>
           <td>{{ messageObject.subject }}</td>
           <td>{{ messageObject.message }}</td>
@@ -60,22 +64,18 @@
               :messageId="messageObject.id"
             />
           </td>
-          </tr>
-          </tbody>
-       </v-simple-table>      
-       <!-- <footer-page /> -->
+        </tr>
+      </tbody>
+    </v-simple-table>
+    <footer-page />
   </div>
 </template>
-
-
-
 
 <script>
 import axios from "axios";
 import MessageCreate from "../components/MessageCreate.vue";
 import MessageDelete from "../components/MessageDelete.vue";
-// import MessageView from "../components/MessageView.vue";
-// import FooterPage from "../components/Footer.vue";
+import FooterPage from "../components/Footer.vue";
 import cookies from "vue-cookies";
 export default {
   name: "message-page",
@@ -86,16 +86,14 @@ export default {
   },
   components: {
     MessageCreate,
-    // MessageView,
     MessageDelete,
-    // FooterPage,
+    FooterPage,
   },
   mounted: function () {
     this.getMessage();
   },
   methods: {
-
-     isOwned: function (messageId) {
+    isOwned: function (messageId) {
       return cookies.get("user") == messageId;
     },
     getMessage: function () {
@@ -122,8 +120,13 @@ export default {
 </script>
 
 <style scoped>
-.container {
-  margin: 20px;
-  color:
+* {
+  margin: 0;
+  padding: 0;
+}
+.tab-align {
+  text-align: justify;
+  margin-right: 2vh;
+  margin-left: 2vh;
 }
 </style>
